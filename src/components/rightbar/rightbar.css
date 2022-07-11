@@ -1,0 +1,79 @@
+.rightbar{
+    height: 100%;
+    flex: 1.5;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 10%, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 1) 20% );
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.rightbar-online{
+    width: 95%;
+    height: 100%;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;  
+}
+
+.rightbar-online::-webkit-scrollbar{
+    width: 3px;
+    background: #f3f3f3;
+}
+.rightbar-online::-webkit-scrollbar-thumb{
+    width: 3px;
+    background: #757575;
+    border-radius: 5px;
+}
+.person-online{
+    width: 90%;
+    margin: 5px 0;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+}
+.online-img{
+    width: 50px;
+    height: 50px;
+    position: relative;  
+}
+.online-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; 
+}
+.online-img::after{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #00ff00;
+    top: 0px;
+    left: 0;
+    border-radius: 50%;
+    border: 2px solid #f3f3f3;
+}
+.divider{
+    width: 60%;
+    height: 2px;
+    background-color: gray;
+    margin-top: 20px;
+}
+.advert-img{
+    width: 95%;
+    height: 300px;
+    margin-top: 20px;
+    position: relative;
+}
+.advert-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
