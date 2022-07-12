@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useRef } from 'react';
 import "./register.css"
-import axios from "axios";
+import {axiosInstance} from "../../config";
 import { UserContext } from '../../context/context';
 
 export default function Register() {
@@ -22,7 +22,7 @@ export default function Register() {
       }
       dispatch({type: "REGISTERED"})
       try {
-        await axios.post("/auth/register", user);
+        await axiosInstance.post("/auth/register", user);
         
       } catch (err) {
         console.log(err)

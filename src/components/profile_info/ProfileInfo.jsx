@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import "./profile-info.css"
 import Middlebar from '../middlebar/Middlebar';
-import axios from "axios";
+import {axiosInstance} from "../../config";
 import { UserContext } from '../../context/context';
 const photos = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -23,7 +23,7 @@ export default function ProfileInfo({user, own, followers, followed}) {
    const handleClick = async ()=>{
         if(isFollowed === false){
           try{
-            await axios.put(`/users/${user._id}/follow`, state.user);
+            await axiosInstance.put(`/users/${user._id}/follow`, state.user);
             setFollows({...follows, followers: follows.followers + 1})
             setIsFollowed(true);
           }catch(err){
@@ -31,7 +31,7 @@ export default function ProfileInfo({user, own, followers, followed}) {
           }
         }else{
           try {
-            await axios.put(`/users/${user._id}/unfollow`, state.user);
+            await axiosInstance.put(`/users/${user._id}/unfollow`, state.user);
             setFollows({...follows, followers: follows.followers - 1})
             setIsFollowed(false);
 

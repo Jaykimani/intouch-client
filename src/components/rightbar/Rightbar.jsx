@@ -1,6 +1,6 @@
 import "./rightbar.css"
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import {axiosInstance} from "../../config";
 import { UserContext } from '../../context/context';
 import React, { useContext, useEffect, useState } from "react";
 const photos = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -17,7 +17,7 @@ export default function Rightbar() {
    const fetchOnlines = async ()=>{
      const arr = await Promise.all(
        onlines.map((item)=>{
-         const user = axios.get(`/users?userId=${item}`)
+         const user = axiosInstance.get(`/users?userId=${item}`)
          return user
        })
      );
@@ -32,7 +32,7 @@ export default function Rightbar() {
 const handleClick = async (e)=>{
   const username = e.currentTarget.innerHTML;
   try {
-    const user = await axios.get(`/users?username=${username}`);
+    const user = await axiosInstance.get(`/users?username=${username}`);
     const userData = user.data;
     navigate.push(`/profile/${userData._id}`);
   } catch (error) {

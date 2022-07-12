@@ -3,7 +3,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import DuoIcon from '@material-ui/icons/Duo';
 import Feed from "../feed/Feed";
-import axios from "axios";
+import {axiosInstance} from "../../config";
 import { UserContext } from '../../context/context';
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
@@ -25,7 +25,7 @@ export default function Middlebar({own, otherUser}) {
       if(!id.userId){
          const fetchPosts = async ()=>{
             try {
-               let post = await axios.get(`/posts/timeline/${user._id}`); 
+               let post = await axiosInstance.get(`/posts/timeline/${user._id}`); 
                let sortedPosts = post.data.sort((item1, item2)=>{
                   return new Date(item2.createdAt) - new Date(item1.createdAt);
                })
@@ -39,7 +39,7 @@ export default function Middlebar({own, otherUser}) {
       }else{
          const fetchPosts = async ()=>{
             try {
-               let post = await axios.get(`/posts/profile/${id.userId}`); 
+               let post = await axiosInstance.get(`/posts/profile/${id.userId}`); 
                console.log(post.data);
                let sortedPosts = post.data.sort((item1, item2)=>{
                   return new Date(item2.createdAt) - new Date(item1.createdAt);
@@ -66,7 +66,7 @@ export default function Middlebar({own, otherUser}) {
       }
    
     try {
-       await axios.post("/posts", newPost);
+       await axiosInstance.post("/posts", newPost);
        desc.current.value = "";
        setPosted(true);
   

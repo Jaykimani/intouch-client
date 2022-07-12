@@ -4,7 +4,7 @@ import "./feed.css"
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import {useHistory} from "react-router-dom";
-import axios from "axios"
+import {axiosInstance} from "../../config"
 import { UserContext } from '../../context/context';
 
 
@@ -24,7 +24,7 @@ export default function Feed({info}) {
   useEffect(()=>{
     const fetchUser = async ()=>{
       try {
-        const postOwner = await axios.get(`/users?userId=${info.userId}`);
+        const postOwner = await axiosInstance.get(`/users?userId=${info.userId}`);
         setUser(postOwner.data)
       } catch (error) {
         console.log(error)
@@ -37,7 +37,7 @@ export default function Feed({info}) {
 const handleClick = async (e)=>{
   let clickedName = e.currentTarget.innerHTML;
    try {
-     let clickedUser = await axios.get(`/users?username=${clickedName}`);
+     let clickedUser = await axiosInstance.get(`/users?username=${clickedName}`);
      let nameId = clickedUser.data._id;  
      navigate.push(`/profile/${nameId}`);
    } catch (error) {
@@ -46,7 +46,7 @@ const handleClick = async (e)=>{
 }
 
 const handleLike = async ()=>{
-  await axios.put(`/posts/${info._id}/like`, [state.user, info.userId]);
+  await axiosInstance.put(`/posts/${info._id}/like`, [state.user, info.userId]);
   setIsLiked(!isLiked);
   
   !isLiked ? setLikes(likes + 1) : setLikes(likes - 1);
@@ -62,9 +62,9 @@ const handleComment = async ()=>{
        desc : comment.current.value
   }
   try {
-    await axios.put(`/posts/${info._id}/comment`, commentObj);
+    await axiosInstance.put(`/posts/${info._id}/comment`, commentObj);
     setCommentsNumber(commentsNumber + 1)
-    const postComments = await axios.get(`/posts/${info._id}`);
+    const postComments = await axiosInstance.get(`/posts/${info._id}`);
     setUserComments(postComments.data.comments);
     
     comment.current.value = "";
@@ -80,7 +80,7 @@ const handleComment = async ()=>{
 const handleView = async ()=>{
   setViewComments(!viewComments);
   try{
-    const postComments = await axios.get(`/posts/${info._id}`);
+    const postComments = await axiosInstance.get(`/posts/${info._id}`);
    setUserComments(postComments.data.comments);
    
   }catch(err){

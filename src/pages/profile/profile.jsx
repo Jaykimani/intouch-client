@@ -4,7 +4,7 @@ import Navbar from '../../components/navbar/navbar';
 import Leftbar from '../../components/leftbar/Leftbar';
 import ProfileInfo from '../../components/profile_info/ProfileInfo';
 import { useParams } from 'react-router';
-import axios from "axios";
+import {axiosInstance} from "../../config";
 import {UserContext} from "../../context/context"
 
 export default function Profile() {
@@ -27,7 +27,7 @@ export default function Profile() {
     }
 
     const fetchUser = async ()=>{
-        const user = await axios.get(`/users?userId=${id.userId}`);
+        const user = await axiosInstance.get(`/users?userId=${id.userId}`);
         setUserData(user.data);
         setFollowers({followers: user.data.followers.length, following: user.data.following.length}) ;
 
