@@ -3,6 +3,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import axios from 'axios';
 import "./login.css"
 import { UserContext } from '../../context/context';
+import {axiosInstance} from '../../config'
 
 export default function Login() {
   const {state, dispatch} =useContext(UserContext);
@@ -17,7 +18,7 @@ export default function Login() {
        password: password.current.value
     }
     try {
-      const loggedUser = await axios.post("/auth/login", user);  
+      const loggedUser = await axiosInstance.post("/auth/login", user);  
      dispatch({type: "LOGIN-SUCCEED", payload: loggedUser.data});
      
     } catch (err) {
