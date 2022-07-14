@@ -51,6 +51,106 @@
     padding: 10px 20px;
     border-radius: 10px;
 }
+.about-sec{
+    text-align: center;
+    position: relative;
+}
+.about-info{
+    position: absolute;
+    top: 110%;
+    left: -100%;
+    width: 350px;
+    height: 400px;
+    background-color: aqua;
+    display: none;
+}
+.followers-sec{
+    text-align: center;
+    position: relative;
+}
+.followers-info{
+    position: absolute;
+    top: 110%;
+    left: -60%;
+    width: 300px;
+    height: 400px;
+    padding: 7px 0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 3px gray;
+    border-radius: 6px;
+    opacity: 0;
+    display: none; 
+    overflow: scroll;
+    overflow-x: hidden; 
+}
+.following-sec{
+    text-align: center;
+    position: relative;
+}
+.following-info{
+    position: absolute;
+    top: 110%;
+    left: -60%;
+    width: 300px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 3px gray;
+    border-radius: 5px;
+    opacity: 0;
+    display: none;
+    overflow: scroll;
+    overflow-x: hidden;  
+}
+.following-info::-webkit-scrollbar {
+    width: 3px;
+    background-color: white;
+  }
+.following-info::-webkit-scrollbar-track { 
+    border-radius: 10px;
+  }
+.following-info::-webkit-scrollbar-thumb {
+    background-color: black; 
+    border-radius: 10px;
+  }  
+.followers-info::-webkit-scrollbar {
+    width: 3px;
+    background-color: white;
+  }
+.followers-info::-webkit-scrollbar-track { 
+    border-radius: 10px;
+  }
+.followers-info::-webkit-scrollbar-thumb {
+    background-color: black; 
+    border-radius: 10px;
+  }  
+.active{
+    opacity: 1;
+    display: block;
+}
+.person{
+    width: 95%;
+    margin: 8px auto;
+    padding: 0 17px;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px;
+    align-items: center;
+    background-color: #e9ebf6;
+}
+.person img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.person p{
+    text-decoration: underline;
+}
+.follow-link{
+    text-decoration: none;
+    color: black;
+}
 .prof-stats button{
     width: 120px;
     height: 40px;

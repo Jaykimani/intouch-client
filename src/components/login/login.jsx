@@ -1,6 +1,5 @@
 import React ,{useContext, useRef} from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress'
-import axios from 'axios';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import "./login.css"
 import { UserContext } from '../../context/context';
 import {axiosInstance} from '../../config'

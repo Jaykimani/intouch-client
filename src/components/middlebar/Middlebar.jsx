@@ -40,7 +40,6 @@ export default function Middlebar({own, otherUser}) {
          const fetchPosts = async ()=>{
             try {
                let post = await axiosInstance.get(`/posts/profile/${id.userId}`); 
-               console.log(post.data);
                let sortedPosts = post.data.sort((item1, item2)=>{
                   return new Date(item2.createdAt) - new Date(item1.createdAt);
                })
